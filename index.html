@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>조창민 — 신상 기록</title>
+<style>
+  :root{
+    --bg:#1A1613;
+    --panel:#221C17;
+    --paper:#ECE3D0;
+    --paper-dim:#B9AD95;
+    --brass:#C6A15B;
+    --brass-dim:#8A754A;
+    --hair: rgba(236,227,208,0.16);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--paper);
+    font-family:-apple-system, BlinkMacSystemFont, "Malgun Gothic", "Apple SD Gothic Neo", "Segoe UI", Roboto, sans-serif;
+    font-weight:400;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--brass); color:#1A1613; }
+
+  a{ color:inherit; }
+
+  .wrap{
+    max-width:980px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:72px 0 56px;
+    background:
+      radial-gradient(700px 420px at 88% -12%, rgba(198,161,91,0.10), transparent 60%),
+      var(--bg);
+    border-bottom:1px solid var(--hair);
+  }
+  .hero-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:28px;
+    flex-wrap:wrap;
+  }
+  .doc-line{
+    font-size:0.72rem;
+    color:var(--brass);
+    letter-spacing:0.03em;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4rem);
+    font-weight:900;
+    margin:0;
+    line-height:1.05;
+    color:var(--paper);
+  }
+  .id-photo-box{
+    position:relative;
+    width:96px;
+    flex-shrink:0;
+  }
+  .id-photo-box .frame{
+    width:96px;
+    height:124px;
+    border:1px solid var(--brass-dim);
+    padding:4px;
+  }
+  .id-photo-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:50% 14%;
+    display:block;
+    filter:grayscale(35%) contrast(1.05);
+  }
+  /* one deliberate entrance moment */
+  .hero .doc-line, .hero h1, .id-photo-box{
+    animation: rise 0.85s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .hero h1{ animation-delay:0.08s; }
+  .id-photo-box{ animation-delay:0.14s; }
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero .doc-line, .hero h1, .id-photo-box{ animation:none; }
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding:52px 0; }
+  .panel{
+    position:relative;
+    background:var(--panel);
+    border:1px solid var(--hair);
+    border-radius:3px;
+    padding:34px 30px 30px;
+  }
+  .field-label{
+    position:absolute;
+    top:-13px;
+    left:24px;
+    background:var(--bg);
+    padding:0 10px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--brass);
+    font-weight:600;
+    font-size:1rem;
+  }
+  .field-label svg{ width:18px; height:18px; flex-shrink:0; }
+
+  .emblem{
+    float:left;
+    width:76px;
+    height:76px;
+    margin:2px 20px 10px 0;
+    opacity:0.95;
+  }
+
+  .prose{
+    max-width:64ch;
+    font-size:1.05rem;
+    color:var(--paper);
+  }
+  .prose p{ margin:0 0 18px; }
+  .prose p:last-child{ margin-bottom:0; }
+
+  .about .prose{ font-size:1.1rem; color:var(--paper); }
+
+  /* Career layout */
+  .career-grid{
+    display:grid;
+    grid-template-columns:1.6fr 1fr;
+    gap:32px;
+    align-items:start;
+  }
+  .exhibit{
+    max-width:280px;
+    margin-left:auto;
+  }
+  .exhibit-photo{
+    border:1px solid var(--brass-dim);
+    padding:5px;
+    background:#0F0D0B;
+  }
+  .exhibit-photo img{
+    width:100%;
+    display:block;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    object-position:50% 8%;
+    filter:grayscale(30%) contrast(1.05);
+  }
+  .exhibit-tag{
+    margin-top:8px;
+    font-size:0.72rem;
+    color:var(--paper-dim);
+    text-align:right;
+  }
+
+  /* Contact */
+  .contact .panel{
+    text-align:left;
+  }
+  .contact p{
+    color:var(--paper-dim);
+    max-width:52ch;
+    margin:0 0 26px;
+    font-size:1.05rem;
+  }
+  .mail-link{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:1rem;
+    color:var(--paper);
+    background:transparent;
+    border:1px solid var(--brass);
+    padding:14px 24px;
+    border-radius:2px;
+    text-decoration:none;
+    font-weight:500;
+    transition:background 0.18s ease, color 0.18s ease;
+  }
+  .mail-link:hover{
+    background:var(--brass);
+    color:#1A1613;
+  }
+  .mail-link:focus-visible, a:focus-visible{
+    outline:2px solid var(--brass);
+    outline-offset:3px;
+  }
+  .mail-link svg{ width:16px; height:16px; }
+
+  footer{
+    padding:26px 0 40px;
+    text-align:center;
+    font-size:0.78rem;
+    color:var(--paper-dim);
+  }
+
+  @media (max-width: 720px){
+    .hero{ padding:52px 0 44px; }
+    section{ padding:40px 0; }
+    .wrap{ padding:0 20px; }
+    .career-grid{ grid-template-columns:1fr; gap:22px; }
+    .exhibit{ margin-left:0; max-width:220px; }
+    .exhibit-tag{ text-align:left; }
+    .emblem{ width:60px; height:60px; margin:2px 14px 10px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div>
+        <div class="doc-line">개인 신상 기록 &nbsp;NO. MAS-B/20121</div>
+        <h1>조창민</h1>
+      </div>
+      <div class="id-photo-box">
+        <div class="frame">
+          <img src="assets/changmin.jpg" alt="조창민 증명사진">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="about">
+    <div class="wrap">
+      <div class="panel">
+        <span class="field-label">기본 정보</span>
+        <div class="prose">
+          <p>안녕하세요 저는 조창민이고요. 제 이름의 뜻은 푸른 하늘이라는 뜻이고요. 리퍼블릭 오브 코리아, 한국어로 대한민국을 고향으로 하시고 아직까지도 대한민국 사람이신 어머니와 아버지의 사이에서 누나보다 늦게 태어난 둘째이자 막내이자 남동생이자 사람이자 별생각 없이 흘러가는 대로 사는 무기물 같은 것이고 컴퓨터를 다룰 줄 알아요.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="career">
+    <div class="wrap">
+      <div class="panel">
+        <span class="field-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/><path d="M22 8v5"/></svg>
+          학력 및 경력
+        </span>
+        <div class="career-grid">
+          <div class="prose">
+            <p>저는 홍익대 컴공과를 나왔습니다. 왜냐면 누나가 홍익대인데 최소한 누나보다 낮은 곳으로 가고 싶지는 않아서요. 그리고 시간이 나서 게임을 간단하게 하나 만들어서 아무도 모르게 출시했다가 사라졌습니다. 고2 때 C언어 부분의 전국 대회에서 4등에서 6등 사이를 하여 은상을 받았습니다.</p>
+          </div>
+          <div class="exhibit">
+            <div class="exhibit-photo">
+              <img src="assets/changmin.jpg" alt="컴퓨터실 풍경, 뒤편에 C Language & Python 표지판">
+            </div>
+            <p class="exhibit-tag">첨부. C Language &amp; Python 수업 컴퓨터실</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stack">
+    <div class="wrap">
+      <div class="panel">
+        <span class="field-label">특기 사항</span>
+        <div class="prose">
+          <img class="emblem" src="assets/gamepad.png" alt="게임패드 아이콘">
+          <p>게임을 좋아해서 많이 알고 그래서 게임에 대한 지식이 많습니다. 근데 잘하지는 못하고 C, C++, Python을 다룰 줄 압니다. 그리고 잘못하면 사과를 합니다. 그리고 자존심이 크게 없어서 다른 사람과 다르게 여러가지를 할 수 있습니다. 그리고 누나 때문에 말을 잘 들어서 심부름을 잘합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="wrap">
+      <div class="panel">
+        <span class="field-label">문의처</span>
+        <p>궁금한 점이 있으면 이메일로 연락 주세요.</p>
+        <a class="mail-link" href="mailto:changminjo855@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+          changminjo855@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  조창민
+</footer>
+
+</body>
+</html>
