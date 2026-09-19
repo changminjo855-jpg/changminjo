@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>조창민</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F5F7;
+    --ink:#1B2430;
+    --slate:#5B6672;
+    --sky-deep:#163A56;
+    --sky:#2C6899;
+    --sky-bright:#5FA8D3;
+    --sky-tint:#DCEBF4;
+    --amber:#D98A3D;
+    --line: rgba(27,36,48,0.12);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Gothic A1', sans-serif;
+    font-weight:400;
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--sky-tint); color:var(--sky-deep); }
+
+  .mono{
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  a{ color:inherit; }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(1100px 700px at 82% -10%, rgba(255,255,255,0.16), transparent 60%),
+      linear-gradient(150deg, var(--sky-deep) 0%, var(--sky) 52%, var(--sky-bright) 100%);
+    color:#fff;
+    padding:80px 0 76px;
+  }
+
+  .id-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    background:rgba(255,255,255,0.96);
+    color:var(--ink);
+    padding:8px 20px 8px 8px;
+    border-radius:12px;
+    position:relative;
+    box-shadow:0 18px 34px -18px rgba(6,20,32,0.55);
+    margin-bottom:28px;
+  }
+  .id-badge::before{
+    content:"";
+    position:absolute;
+    top:-8px;
+    left:34px;
+    width:30px;
+    height:12px;
+    border-radius:6px;
+    background:rgba(255,255,255,0.96);
+  }
+  .id-photo{
+    width:52px;
+    height:66px;
+    border-radius:7px;
+    object-fit:cover;
+    object-position:50% 14%;
+    display:block;
+    flex-shrink:0;
+  }
+  .id-text{
+    display:flex;
+    flex-direction:column;
+    gap:1px;
+  }
+  .id-text .id-line1{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.03em;
+    color:var(--slate);
+  }
+  .id-text .id-line2{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.68rem;
+    color:var(--slate);
+  }
+  .id-text .id-name{
+    font-weight:700;
+    font-size:1rem;
+    color:var(--sky-deep);
+    margin-top:2px;
+  }
+
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.4rem);
+    font-weight:900;
+    margin:0;
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+
+  /* one deliberate entrance moment */
+  .hero .id-badge, .hero h1{
+    animation: rise 0.8s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .hero h1{ animation-delay:0.08s; }
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero .id-badge, .hero h1{ animation:none; }
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{
+    padding:76px 0;
+  }
+  main section + section{
+    border-top:1px solid var(--line);
+  }
+  h2{
+    font-size:clamp(1.5rem, 2.4vw, 1.9rem);
+    font-weight:700;
+    margin:0 0 26px;
+    color:var(--ink);
+  }
+
+  .prose{
+    max-width:64ch;
+    font-size:1.05rem;
+    color:var(--ink);
+  }
+  .prose p{ margin:0 0 20px; }
+  .prose p:last-child{ margin-bottom:0; }
+
+  .about .prose{ font-size:1.12rem; color:#2A3644; }
+
+  /* Career layout */
+  .career-grid{
+    display:grid;
+    grid-template-columns:1.7fr 1fr;
+    gap:40px;
+    align-items:start;
+  }
+  .career-photo{
+    max-width:300px;
+    margin-left:auto;
+    border-radius:6px 18px 18px 18px;
+    overflow:hidden;
+    aspect-ratio:4/3;
+    border:1px solid var(--line);
+    box-shadow:0 20px 34px -24px rgba(20,40,60,0.4);
+  }
+  .career-photo img{
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:50% 8%;
+    display:block;
+  }
+  .career-caption{
+    max-width:300px;
+    margin:10px 0 0 auto;
+    font-size:0.82rem;
+    color:var(--slate);
+    text-align:right;
+  }
+
+  /* Contact */
+  .contact{
+    background:
+      radial-gradient(900px 500px at 12% 120%, rgba(255,255,255,0.14), transparent 60%),
+      linear-gradient(150deg, var(--sky-deep) 0%, var(--sky) 60%, var(--sky-bright) 100%);
+    color:#fff;
+  }
+  .contact h2{ color:#fff; }
+  .contact p{
+    color:rgba(255,255,255,0.9);
+    max-width:52ch;
+    margin:0 0 30px;
+    font-size:1.05rem;
+  }
+  .mail-link{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:1.05rem;
+    color:var(--sky-deep);
+    background:#fff;
+    padding:16px 26px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:500;
+    box-shadow:0 20px 34px -18px rgba(4,14,24,0.45);
+    transition:transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .mail-link:hover{
+    transform:translateY(-2px);
+    box-shadow:0 26px 40px -18px rgba(4,14,24,0.5);
+  }
+  .mail-link:focus-visible, a:focus-visible, button:focus-visible{
+    outline:3px solid var(--sky-bright);
+    outline-offset:3px;
+  }
+  .mail-link svg{ width:18px; height:18px; }
+
+  footer{
+    padding:26px 0;
+    text-align:center;
+    font-size:0.85rem;
+  }
+  footer .mono{ color:var(--sky-deep); }
+
+  @media (max-width: 860px){
+    .hero{ padding:56px 0 48px; }
+    section{ padding:54px 0; }
+    .wrap{ padding:0 22px; }
+    .career-grid{ grid-template-columns:1fr; gap:24px; }
+    .career-photo, .career-caption{ margin-left:0; margin-right:0; max-width:220px; text-align:left; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="id-badge">
+      <img class="id-photo" src="assets/changmin.jpg" alt="조창민 증명사진">
+      <div class="id-text">
+        <span class="id-line1">MAS-B</span>
+        <span class="id-line2">20121</span>
+        <span class="id-name">조창민</span>
+      </div>
+    </div>
+    <h1>조창민</h1>
+  </div>
+</header>
+
+<main>
+  <section class="about">
+    <div class="wrap">
+      <h2>소개</h2>
+      <div class="prose">
+        <p>안녕하세요 저는 조창민이고요. 제 이름의 뜻은 푸른 하늘이라는 뜻이고요. 리퍼블릭 오브 코리아, 한국어로 대한민국을 고향으로 하시고 아직까지도 대한민국 사람이신 어머니와 아버지의 사이에서 누나보다 늦게 태어난 둘째이자 막내이자 남동생이자 사람이자 별생각 없이 흘러가는 대로 사는 무기물 같은 것이고 컴퓨터를 다룰 줄 알아요.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="career">
+    <div class="wrap">
+      <h2>학력과 경력</h2>
+      <div class="career-grid">
+        <div class="prose">
+          <p>저는 홍익대 컴공과를 나왔습니다. 왜냐면 누나가 홍익대인데 최소한 누나보다 낮은 곳으로 가고 싶지는 않아서요. 그리고 시간이 나서 게임을 간단하게 하나 만들어서 아무도 모르게 출시했다가 사라졌습니다. 고2 때 C언어 부분의 전국 대회에서 4등에서 6등 사이를 하여 은상을 받았습니다.</p>
+        </div>
+        <div>
+          <div class="career-photo">
+            <img src="assets/changmin.jpg" alt="컴퓨터실 풍경, 뒤편에 C Language & Python 표지판">
+          </div>
+          <p class="career-caption">C Language &amp; Python 수업 컴퓨터실</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stack">
+    <div class="wrap">
+      <h2>기술과 성향</h2>
+      <div class="prose">
+        <p>게임을 좋아해서 많이 알고 그래서 게임에 대한 지식이 많습니다. 근데 잘하지는 못하고 C, C++, Python을 다룰 줄 압니다. 그리고 잘못하면 사과를 합니다. 그리고 자존심이 크게 없어서 다른 사람과 다르게 여러가지를 할 수 있습니다. 그리고 누나 때문에 말을 잘 들어서 심부름을 잘합니다.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="contact">
+  <div class="wrap">
+    <h2>연락</h2>
+    <p>궁금한 점이 있으면 이메일로 연락 주세요.</p>
+    <a class="mail-link" href="mailto:changminjo855@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+      changminjo855@gmail.com
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span class="mono">조창민</span>
+</footer>
+
+</body>
+</html>
